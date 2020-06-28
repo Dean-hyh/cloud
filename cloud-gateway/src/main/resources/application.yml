@@ -1,0 +1,99 @@
+#服务端口
+server:
+  port: 20010
+#应用名称，用于注册中心服务发现
+spring:
+  application:
+    name: cloud-gateway
+#eureka注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10010/eureka
+    registry-fetch-interval-seconds: 5
+
+#hystrix熔断器
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 # 熔断超时时长：6000ms
+#ribbon负载均衡
+ribbon:
+  # ribbon连接超时时长
+  ConnectTimeout: 1000
+  # ribbon读取超时时长
+  ReadTimeout: 2500
+  # 当前服务重试次数
+  MaxAutoRetries: 0
+  # 切换服务重试次数
+  MaxAutoRetriesNextServer: 1
+  # 是否对所有的请求方式都重试----只对get请求重试
+  OkToRetryOnAllOperations: false
+#zuul网关
+zuul:
+  # 路由-路径映射
+  prefix: /api
+  routes:
+    # 将商品微服务映射到/api/item/**
+    item-service: /item/**
+    # 将文件上传微服务映射到/api/upload/**
+    upload-service: /upload/**
+    # 将搜索微服务映射到/api/search/**
+    search-service: /search/**
+    # 将用户中心微服务映射到/api/user/**
+    user-service: /user/**
+    # 将授权中心微服务映射到/api/auth/**
+    auth-service: /auth/**
+    # 将购物车微服务映射到/api/cart/**
+    cart-service: /cart/**
+    # 这种方式添加，/order会作为真实路径的一部分
+    order-service:
+      path: /order/**
+      serviceId: order-service
+      strip-prefix: false
+    pay-service:
+      path: /pay/**
+      serviceId: order-service
+      strip-prefix: false
+  sensitive-headers:
+# 自定义配置
+dean:
+  # url白名单--不登录状态下可以访问的服务
+  filter:
+      allowPaths:
+        - /api/auth/login
+        - /api/search
+        - /api/user/register
+        - /api/user/check
+        - /api/user/code
+        - /api/item
+        - /api/pay
+
+  # jwt信息
+  jwt:
+      # 公钥地址
+      pubKeyPath: D:/idea/ideaSpace_SpringBoot/ssh/id_rsa.pub
+      # cookie名称
+      user:
+        cookieName: DEAN_TOKEN
+
+  # cors跨域配置信息
+  cors:
+    allowedOrigins:
+      - http://manage.dean.com
+      - http://www.dean.com
+    allowedCredentials: true
+    allowedHeaders:
+      - "*"
+    allowedMethods:
+      - GET
+      - POST
+      - DELETE
+      - PUT
+      - OPTIONS
+      - HEAD
+    maxAge: 360000
+    filterPath: "/**"
