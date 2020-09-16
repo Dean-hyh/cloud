@@ -15,7 +15,7 @@ public abstract class BaseRegexPatterns {
     /**
      * 邮箱正则
      */
-    public static final String EMAIL_REGEX = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
+    public static final String EMAIL_REGEX = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
 
     /**
      * 用户名正则
@@ -33,5 +33,5 @@ public abstract class BaseRegexPatterns {
      * 5-6位：月份01-09或者10-12
      * 7-8位：01-09、10-19 、20-29、30、31
      */
-    public static final String BIRTHDAY_REGEX = "(18|19|20)?\\\\d{2}(0[1-9]|1[012])(0[1-9]|[12]\\\\d|3[01])";
+    public static final String BIRTHDAY_REGEX = "(18|19|20)?\\d{2}(0[1-9]|1[012])(0[1-9]|[12]\\d{1}|3[01])";
 }

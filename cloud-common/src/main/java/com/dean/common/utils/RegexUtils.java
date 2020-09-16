@@ -75,15 +75,19 @@ public class RegexUtils {
      */
     public static boolean verify(char[] id) {
         int sum = 0;
-        int w[] = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
-        char[] ch = { '1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2' };
+        int[] factor = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
+        char[] parity = { '1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2' };
         for (int i = 0; i < id.length - 1; i++) {
-            sum += (id[i] - '0') * w[i];
+            sum += (id[i] - '0') * factor[i];
         }
         int c = sum % 11;
-        char code = ch[c];
+        char code = parity[c];
         char last = id[id.length - 1];
         last = last == 'x' ? 'X' : last;
         return last == code;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isIdNo("420682199207306311"));
     }
 }
