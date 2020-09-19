@@ -1,7 +1,6 @@
 package com.dean.common.advice;
 
 import com.dean.common.exception.DeanException;
-import com.dean.common.utils.JsonUtils;
 import com.dean.common.vo.DeanExceptionResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  */
 @ControllerAdvice
 public class BaseExceptionAdvice {
-    private static final Logger logger = LoggerFactory.getLogger(JsonUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseExceptionAdvice.class);
 
     /**
      * 异常捕获方法

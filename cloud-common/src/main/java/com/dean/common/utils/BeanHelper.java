@@ -50,7 +50,7 @@ public class BeanHelper {
         try {
             return sourceList.stream().map(s -> copyProperties(s, target)).collect(Collectors.toSet());
         } catch (Exception e) {
-            logger.error("【数据转换】数据转换出错，目标对象{}构造函数异常", target.getName(), e);
+            logger.error("【数据转换】数据转换出错，目标对象{}构造函数异常,{}", target.getName(), e);
             //throw new DeanException(ExceptionEnum.DATA_TRANSFER_ERROR);
             return null;
         }

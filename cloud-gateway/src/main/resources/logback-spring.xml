@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <property name="logHome" value="/home/logs/dean/dean_cloud" scope="context"/>
+    <!--JMX监控-->
+    <jmxConfigurator/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <conversionRule conversionWord="ip" converterClass="com.dean.config.LocalIpConfig" />
+    <springProperty scope="context" name="springAppName" source="spring.application.name" />
+    <!-- 为logstash输出的JSON格式的Appender -->
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!--日志目的地主机logstash-->
+        <destination>192.168.153.138:5044</destination>
+        <!-- 日志输出编码 -->
+        <encoder
+                class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                        "host": "%ip",
+                        "level": "%level",
+                        "service": "${springAppName:-}",
+                        "trace": "%X{X-B3-TraceId:-}",
+                        "span": "%X{X-B3-SpanId:-}",
+                        "exportable": "%X{X-Span-Export:-}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger{40}",
+                        "log": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!--控制台日志-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                <![CDATA[
+                    %n%d{yyyy-MM-dd HH:mm:ss.SSS} %X{localAddr} %X{localPort} [IP=%X{remoteAddr},sid=%X{cookie.JSESSIONID}]%n %-5level %-4r %logger{36} - %m%n
+                ]]>
+            </pattern>
+        </layout>
+    </appender>
+
+    <!-- 日志输出级别 -->
+    <root level="INFO">
+        <appender-ref ref="logstash" />
+        <appender-ref ref="console" />
+    </root>
+</configuration>

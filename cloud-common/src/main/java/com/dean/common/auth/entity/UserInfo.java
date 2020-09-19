@@ -1,11 +1,13 @@
 package com.dean.common.auth.entity;
 
+import java.io.Serializable;
+
 /**
  * @author Dean.h
  * @version 1.0 2020/6/28
  * 注册用户的信息实体类
  */
-public class UserInfo {
+public class UserInfo implements Serializable {
 
     private Long id;
 

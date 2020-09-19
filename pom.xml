@@ -12,6 +12,8 @@
 		<module>cloud-eureka</module>
 		<module>cloud-gateway</module>
         <module>cloud-common</module>
+		<module>cloud-user</module>
+        <module>cloud-auth</module>
     </modules>
 	<name>cloud</name>
 	<description>Java microservice project infrastructure</description>
