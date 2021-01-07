@@ -4,26 +4,35 @@ spring:
   application:
     name: user-service
   datasource:
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql:///cloud?serverTimezone=GMT%2B8&autoR&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
-      username: root
-      password: hz13554
+      #remote db
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://ts-yuanh.mysql.rds.aliyuncs.com:3306/cloud?serverTimezone=GMT%2B8&autoR&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      username: dean
+      password: HYH13554h
+      #local db
+      # driver-class-name: com.mysql.jdbc.Driver
+      # url: jdbc:mysql:///cloud?serverTimezone=GMT%2B8&autoR&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      # username: root
+      # password: hz13554
       type: com.alibaba.druid.pool.DruidDataSource
-  redis:
+  redis:  #未设置密码
     host: 192.168.230.129
   rabbitmq:
     host: 192.168.230.129
     port: 5672
     username: admin
     password: 123456
-    virtual-host: /
+    virtual-host: /cloud
+    #publisher-confirms: true  默认
+    publisher-returns: true
     template:
         retry:
           enabled: true
           initial-interval: 10000ms
           max-interval: 80000ms
           multiplier: 2
-     #publisher-confirms: true
+
+
 #myBatis-plus配置
 mybatis-plus:
   configuration:

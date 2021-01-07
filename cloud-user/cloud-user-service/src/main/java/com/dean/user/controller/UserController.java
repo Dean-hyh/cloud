@@ -7,6 +7,7 @@ import com.dean.user.service.PeUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,12 +43,9 @@ public class UserController{
         throw new DeanException(DeanExceptionEnum.DATA_TRANSFER_ERROR);
     }
 
-    @GetMapping(value = "/respTest")
-    public ResponseEntity<Map<String,String>> resultTest(){
-        Map<String,String> map = new HashMap<>();
-        map.put("name","张三");
-        map.put("sex","男");
-        map.put("age","28");
-        return ResponseEntity.ok(map);
+    @GetMapping(value = "/rabbitMqTest")
+    public ResponseEntity<Void> rabbitMqTest(){
+        userService.rabbitMqTest();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

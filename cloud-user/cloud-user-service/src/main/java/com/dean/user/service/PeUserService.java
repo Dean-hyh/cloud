@@ -17,4 +17,10 @@ import java.util.List;
 public interface PeUserService extends IService<PeUser> {
 
     List<PeUserVO> queryUserList();
+
+    void rabbitMqTest();
+
+    void registerTest(String test);
+
+    void registerTest1(String test);
 }

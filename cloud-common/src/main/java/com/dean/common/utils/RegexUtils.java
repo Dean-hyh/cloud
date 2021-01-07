@@ -1,6 +1,7 @@
 package com.dean.common.utils;
 
-import com.dean.common.utils.constants.BaseRegexPatterns;
+
+import com.dean.common.constants.BaseRegexPatterns;
 import org.apache.commons.lang3.StringUtils;
 
 /**

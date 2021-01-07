@@ -1,4 +1,4 @@
-package com.dean.common.utils.constants;
+package com.dean.common.constants;
 
 /**
  * @author Dean.h
