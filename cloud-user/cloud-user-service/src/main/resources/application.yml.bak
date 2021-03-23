@@ -4,7 +4,7 @@ spring:
   application:
     name: user-service
   datasource:
-      #remote db aliyun数据库
+      #remote db
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://ts-yuanh.mysql.rds.aliyuncs.com:3306/cloud?serverTimezone=GMT%2B8&autoR&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
       username: dean

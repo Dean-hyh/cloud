@@ -23,6 +23,4 @@ public interface PeUserService extends IService<PeUser> {
     void registerTest(String test);
 
     void registerTest1(String test);
-
-    void rabbitSmsTest();
 }

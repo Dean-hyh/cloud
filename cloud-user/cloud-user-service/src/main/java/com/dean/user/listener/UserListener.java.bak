@@ -23,8 +23,9 @@ public class UserListener {
     private PeUserService peUserService;
 
     /**
-     * 消费者1
+     * test
      * @param test
+     * @throws Exception
      */
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = BaseMqConstants.Queue.USER_REGISTR, durable = "true"),
@@ -34,7 +35,7 @@ public class UserListener {
                     type = ExchangeTypes.TOPIC
             ),
             key = USER_REGISTER_KEY))
-    public void registerTest(String test){
+    public void registerTest(String test) throws Exception{
         peUserService.registerTest(test);
     }
 }

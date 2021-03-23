@@ -14,6 +14,7 @@
         <module>cloud-common</module>
 		<module>cloud-user</module>
         <module>cloud-auth</module>
+        <module>cloud-sms</module>
     </modules>
 	<name>cloud</name>
 	<description>Java microservice project infrastructure</description>
@@ -36,7 +37,7 @@
 		<!--cloud版本 霍克思顿·SR5-->
 		<spring-cloud.version>Hoxton.SR5</spring-cloud.version>
 		<!--mysql依赖版本 5.x-->
-<!--		<mysql.version>5.1.49</mysql.version>-->
+		<!--<mysql.version>5.1.49</mysql.version>-->
 		<mysql.version>8.0.15</mysql.version>
 		<!--mybatisplus版本-->
 		<mybaitsPlus.version>3.3.2</mybaitsPlus.version>

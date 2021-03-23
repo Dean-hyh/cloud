@@ -1,0 +1,31 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: sms-service
+    # rabbitMQ配置
+  rabbitmq:
+    host: 192.168.230.129
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: /cloud
+    #publisher-confirms: true  默认
+    publisher-returns: true
+    template:
+      retry:
+        enabled: true
+        initial-interval: 10000ms
+        max-interval: 80000ms
+        multiplier: 2
+dean:
+  sms:
+    accessKeyId: ----------------
+    accessKeySecret: ----------------
+    domain: ---------------- # 域名
+    version: ---------------- # API版本，固定值
+    action: ---------------- # API类型，发送短信
+    regionID: ---------------- # 区域id
+    signName: ---------------- # 签名名称
+    # verifyCodeTemplate: ---------------- # 模板名称1
+    verifyCodeTemplate: ---------------- # 模板名称2

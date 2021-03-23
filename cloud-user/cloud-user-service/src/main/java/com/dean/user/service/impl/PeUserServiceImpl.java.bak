@@ -16,14 +16,10 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static com.dean.common.constants.BaseMqConstants.Exchange.SMS_EXCHANGE_NAME;
 import static com.dean.common.constants.BaseMqConstants.Exchange.USER_EXCHANGE_NAME;
 import static com.dean.common.constants.BaseMqConstants.RoutingKey.USER_REGISTER_KEY;
-import static com.dean.common.constants.BaseMqConstants.RoutingKey.VERIFY_CODE_KEY;
 
 /**
  * <p>
@@ -70,13 +66,5 @@ public class PeUserServiceImpl extends ServiceImpl<PeUserMapper, PeUser> impleme
     @Override
     public void registerTest1(String test) {
         System.out.println(test+1+"========================");
-    }
-
-    @Override
-    public void rabbitSmsTest() {
-        Map<String, String> map = new HashMap<>();
-        map.put("phone","17671469096");
-        map.put("code","888888");
-        amqpTemplate.convertAndSend(SMS_EXCHANGE_NAME, VERIFY_CODE_KEY, map);
     }
 }

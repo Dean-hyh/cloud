@@ -48,10 +48,4 @@ public class UserController{
         userService.rabbitMqTest();
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-    @GetMapping(value = "/rabbitSmsTest")
-    public ResponseEntity<Void> rabbitSmsTest(){
-        userService.rabbitSmsTest();
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
 }
