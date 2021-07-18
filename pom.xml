@@ -95,6 +95,14 @@
 				<version>2.14.1</version>
 			</dependency>
 
+			<!--设置全局异步打印日志需要的包-->
+			<!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+			<dependency>
+				<groupId>com.lmax</groupId>
+				<artifactId>disruptor</artifactId>
+				<version>3.4.2</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 </project>

@@ -2,6 +2,8 @@ package com.dean.auth.controller;
 
 import com.dean.auth.service.AuthService;
 import com.dean.user.pojo.VO.PeUserVO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,8 @@ import java.util.List;
 public class AuthController {
     @Autowired
     private AuthService authService;
+
+    private Logger logger = LogManager.getLogger(AuthController.class);
 
     /**
      * 服务间接口调用测试-调用用户微服务接口UserClient
