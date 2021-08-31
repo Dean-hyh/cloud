@@ -5,15 +5,15 @@ spring:
     name: user-service
   datasource:
       #remote db aliyun数据库
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://ts-yuanh.mysql.rds.aliyuncs.com:3306/cloud?serverTimezone=GMT%2B8&autoR&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
-      username: dean
-      password: HYH13554h
+      # driver-class-name: com.mysql.cj.jdbc.Driver
+      # url: jdbc:mysql://ts-yuanh.mysql.rds.aliyuncs.com:3306/cloud?serverTimezone=GMT%2B8&autoR&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      # username: dean
+      # password: HYH13554h
       #local db
-      # driver-class-name: com.mysql.jdbc.Driver
-      # url: jdbc:mysql:///cloud?serverTimezone=GMT%2B8&autoR&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
-      # username: root
-      # password: hz13554
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql:///cloud?serverTimezone=GMT%2B8&autoR&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      username: root
+      password: hz13554
       type: com.alibaba.druid.pool.DruidDataSource
   redis:  #未设置密码
     host: 192.168.230.129
